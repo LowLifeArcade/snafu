@@ -40,6 +40,7 @@ function gameLogic(ws) {
     //     ws.send('The time:' + time.toTimeString());
     // }, 1000);
     ws.on('message', data => {
-        ws.send(`User input ${data}`);
+        // ws.send(`User input ${data}`);
+        ws.send(`${data}`)
     });
 }
