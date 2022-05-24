@@ -1,5 +1,5 @@
-// const express = require('express');
-// const app = express();
+const express = require('express');
+const app = express();
 
 // app.get('/time', (req, res) => {
 // Importing the required modules
