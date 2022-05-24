@@ -1,11 +1,7 @@
+const WebSocketServer = require('ws');
 const express = require('express');
 const app = express();
-
-// app.get('/time', (req, res) => {
-// Importing the required modules
-const WebSocketServer = require('ws');
-
-// Creating a new websocket server
+const server = require('http').createServer(app)
 const wss = new WebSocketServer.Server({ port: 8080 });
 
 // Creating connection using websocket
@@ -27,20 +23,18 @@ wss.on('connection', ws => {
         console.log('Some Error occurred');
     };
 });
-console.log('The WebSocket server is running on port 8080');
-// });
-
-// app.listen('4040', () => {
-//     console.log('Express app listenind on 4040')
-// })
 
 function gameLogic(ws) {
-    // setInterval(() => {
-    //     let time = new Date();
-    //     ws.send('The time:' + time.toTimeString());
-    // }, 1000);
+    // for loop over connections and create array of connections
+    
     ws.on('message', data => {
         // ws.send(`User input ${data}`);
         ws.send(`${data}`)
     });
 }
+
+app.get('/',(req, res) => {
+    res.json('Ayyyy')
+})
+
+server.listen('8080', () => console.log('App listening on port 8080'))
